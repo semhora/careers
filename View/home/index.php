@@ -20,7 +20,7 @@
                 <div class="col-lg-12 col-md-12 col-sm-12"> 
                     <div class="page-header">
                         <?php if (isset($_SESSION['user']['id'])) { ?>
-                            <h1>Bem Vindo <?php echo $_SESSION['user']['nome']; ?>!</h1>
+                            <h1>Bem Vindo <?php echo utf8_encode($_SESSION['user']['nome']); ?>!</h1>
                         <?php } else { ?>
                             <h1>Você não está logado no sistema.</h1>
                         <?php } ?>

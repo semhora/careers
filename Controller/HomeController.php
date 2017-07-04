@@ -11,7 +11,7 @@ class HomeController {
     }
 
     public function login() {
-        
+
         if (isset($_SESSION['user']['id'])) { //AUTENTICAÇÃO LOGIN VAI PRA HOME LOGADO
             header('location:index.php?controller=home&action=index');
         } else {
@@ -26,8 +26,6 @@ class HomeController {
 
                 $usuarioDAO = new UsuarioDAO();
                 $usuario = $usuarioDAO->getUser($usuario);
-
-
 
                 if ($usuario->getId() > 0) { //EXISTE USUÁRIO
                     unset($_SESSION['email']);
@@ -46,6 +44,8 @@ class HomeController {
 
                     $_SESSION['email'] = $usuario->getEmail();
                     $_SESSION['senha'] = $usuario->getSenha();
+
+                    include_once('View/home/login.php');
                 }
             } else {
                 include_once('View/home/login.php');

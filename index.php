@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+ 
 //se digirar
 if(sizeof($_GET) == 0){
    header('Location: http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'?controller=home&action=index');

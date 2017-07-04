@@ -21,7 +21,7 @@
                 <div class="col-lg-12 col-md-12 col-sm-12"> 
 
                     <div class="panel panel-default">
-                        <div class="panel-body"><h2> Evento: <?php echo $evento->getNome(); ?></h2></div>
+                        <div class="panel-body"><h2> Evento: <?php echo utf8_encode($evento->getNome()); ?></h2></div>
                         <div class="panel-footer">
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12"> 
@@ -32,12 +32,12 @@
                                                     <img src="Files/<?php echo $evento->getImagem(); ?>"   class="img-rounded" style="width:100%"/>
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6"> 
-                                                    <h3>Local: <?php echo $evento->getLocal(); ?></h3>
+                                                    <h3>Local: <?php echo utf8_encode($evento->getLocal()); ?></h3>
                                                     
                                                     <h3>Horário do Evento: <?php echo substr($evento->getHoraInicio(),0,5); ?></h3>
                                                     
                                                     <h3>Descrição:</h3>
-                                                    <?php echo $evento->getDescricao(); ?>
+                                                    <?php echo utf8_encode($evento->getDescricao()); ?>
                                                 </div>
                                             </div>
                                         </div>

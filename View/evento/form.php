@@ -16,18 +16,34 @@
                 </div>
             </div>
             <br>
-            <?php if (isset($_SESSION['id'])) { ?>
-                <div class="row">  
-                    <div class="col-lg-2 col-md-2 col-sm-2"> </div>
-                    <div class="col-lg-8 col-md-8 col-sm-8 ">
+
+            <div class="row">  
+                <div class="col-lg-2 col-md-2 col-sm-2"> </div>
+                <div class="col-lg-8 col-md-8 col-sm-8 ">
+
+                    <?php
+                    if (isset($_SESSION['msg'])) {
+                        ?>
+
+                        <div class="alert alert-danger">
+                            <?php echo $_SESSION['msg']; ?>
+                        </div>
+
+                        <?php
+                        unset($_SESSION['msg']);
+                    }
+                    ?>
+                    <?php if (isset($_SESSION['id']) && $_SESSION['id'] != '') { ?>
                         <img src="Files/<?php echo isset($_SESSION['imagem']) ? $_SESSION['imagem'] : null; ?>"   class="img-rounded" height="100" width="100"/>
-                    </div>
-                </div><br>
-            <?php } ?>
+                    <?php } ?>
+                </div>
+            </div><br>
+
 
             <div class="row">                
                 <div class="col-lg-2 col-md-2 col-sm-2"> </div>
                 <div class="col-lg-8 col-md-8 col-sm-8 ">
+
                     <form method="POST" action="?controller=evento&action=salvar" enctype='multipart/form-data'>
                         <input type="hidden" name="id" value="<?php echo isset($_SESSION['id']) ? $_SESSION['id'] : null; ?>"/> 
                         <div class="form-group">
@@ -39,11 +55,11 @@
                         </div>
                         <div class="form-group">
                             <label for="nome">Nome</label> 
-                            <input type="text" name="nome" value="<?php echo isset($_SESSION['nome']) ? utf8_encode($_SESSION['nome']) : null; ?>" class="form-control" maxlength="80" required/>
+                            <input type="text" name="nome" value="<?php echo isset($_SESSION['nome']) ? utf8_encode($_SESSION['nome']) : null; ?>" class="form-control" maxlength="80" required />
                         </div>
                         <div class="form-group">
                             <label for="descricao">Descrição</label> 
-                            <textarea name="descricao" class="form-control" rows="5" cols="60"><?php echo isset($_SESSION['descricao']) ? utf8_encode($_SESSION['descricao']) : null; ?></textarea>
+                            <textarea name="descricao" class="form-control" rows="5" cols="60" required><?php echo isset($_SESSION['descricao']) ? utf8_encode($_SESSION['descricao']) : null; ?></textarea>
                         </div>
                         <div class="form-group">
                             <label for="local">Local</label> 

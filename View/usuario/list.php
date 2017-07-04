@@ -20,7 +20,7 @@
                                 echo '&nbsp; <a class="btn btn-success" href="?controller=usuario&action=listar&status=1">Visualizar Ativos</a>';
                             }
                             ?>
-                            &nbsp; <a class="btn btn-success" href="?controller=usuario&action=novo">Novo</a>
+                            &nbsp; <a class="btn btn-default" href="?controller=usuario&action=novo">Novo</a>
                         </h1>
                     </div>
                 </div>
@@ -29,16 +29,14 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12"> 
                     <?php
-                    if (isset($_SESSION['success'])) {
+                    
+                    if (isset($_GET['msg'])) {
                         ?>
-
-                        <div class="alert alert-<?php echo ($_SESSION['success'] ? 'success' : 'danger'); ?>">
-                            <?php echo $_SESSION['msg']; ?>
+                        <div class="alert alert-success">
+                            <?php echo $_GET['msg']; ?>
                         </div>
 
                         <?php
-                        unset($_SESSION['success']);
-                        unset($_SESSION['msg']);
                     }
                     ?>
 

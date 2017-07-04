@@ -15,51 +15,88 @@ class EventoController {
 
     //INSERT E EDIT NA EMSMA ACTION
     public function salvar() {
+
         if (isset($_SESSION['user']['id'])) { //AUTENTICAÇÃO LOGIN
-            $evento = new Evento();
+            
+            //TRATANDO POST
+            $_SESSION['id'] = addslashes($_POST['id']);
+            $_SESSION['nome'] = utf8_decode(addslashes($_POST['nome']));
+            $_SESSION['descricao'] = utf8_decode(addslashes($_POST['descricao']));
+            $_SESSION['local'] = utf8_decode(addslashes($_POST['local']));
+            $_SESSION['hora_inicio'] = addslashes($_POST['hora_inicio']);
+            $_SESSION['status'] = addslashes($_POST['status']);
+           
+            $msg = '';
+            $msg .= ($_SESSION['nome'] == '') ? '<br> - Campo <b>nome</b> não pode ser vazio.' : '';
+            $msg .= ($_SESSION['descricao'] == '') ? '<br> - Campo <b>descricao</b> não pode ser vazio.' : '';
+            $msg .= ($_SESSION['local'] == '') ? '<br> - Campo <b>local</b> não pode ser vazio.' : '';
+            $msg .= ($_SESSION['hora_inicio'] == '') ? '<br> - Campo <b>hora início</b> não pode ser vazio.' : '';
+            $msg .= ($_SESSION['status'] == '') ? '<br> - Campo <b>status</b> não pode ser vazio.' : '';
+            $msg .= ($_FILES['imagem']['tmp_name'] == '' && $_SESSION['id'] == '') ? '<br> - Campo <b>imagem</b> não pode ser vazio.' : '';
+            
+            if ($msg == '') { //SEM CAMPOS VAZIOS
+                $evento = new Evento();
 
-            $_POST['id'] = addslashes($_POST['id']);
-            $_POST['nome'] = utf8_decode(addslashes($_POST['nome']));
-            $_POST['descricao'] = utf8_decode(addslashes($_POST['descricao']));
-            $_POST['local'] = utf8_decode(addslashes($_POST['local']));
-            $_POST['hora_inicio'] = addslashes($_POST['hora_inicio']);
-            $_POST['status'] = addslashes($_POST['status']);
+                $evento->setId($_SESSION['id']);
+                $evento->setNome($_SESSION['nome']);
+                $evento->setDescricao($_SESSION['descricao']);
+                $evento->setLocal($_SESSION['local']);
+                $evento->setHoraInicio($_SESSION['hora_inicio']);
+                $evento->setStatus($_SESSION['status']);
 
-            $evento->setId($_POST['id']);
-            $evento->setNome($_POST['nome']);
-            $evento->setDescricao($_POST['descricao']);
-            $evento->setLocal($_POST['local']);
-            $evento->setHoraInicio($_POST['hora_inicio']);
-            $evento->setStatus($_POST['status']);
+                $eventoDAO = new EventoDAO();
 
-            //UPLOAD
-            if ($_FILES['imagem']['tmp_name'] != '') {
-                $target = 'Files/' . $_FILES['imagem']['name'];
-                move_uploaded_file($_FILES['imagem']['tmp_name'], $target);
+                //UPLOAD            
+                if ($_FILES['imagem']['tmp_name'] != '') {
 
-                $evento->setImagem($_FILES['imagem']['name']);
+                    //VERIFICA SE JÁ EXISTE IMAGEM DO REGISTRO
+                    if ($evento->getId() > 0) {
+                        $eventoAux = $eventoDAO->getById($evento->getId());
+
+                        $imagem = 'Files/' . $eventoAux->getImagem();
+                        if (file_exists($imagem)) {
+                            unlink($imagem);
+                        }
+                    }
+
+                    $target = 'Files/' . $_FILES['imagem']['name'];
+                    move_uploaded_file($_FILES['imagem']['tmp_name'], $target);
+
+                    $evento->setImagem($_FILES['imagem']['name']);
+                }
+
+                if ($evento->getId() > 0) { //JÁ EXISTE
+                    if ($eventoDAO->update($evento)) { // SUCESSO                      
+                        $msg = 'Evento Alterado com Sucesso';
+                        
+                        header('location:?controller=evento&action=listar&status=1&msg='.$msg);
+                    } else { //ERRO                         
+                        $_SESSION['msg'] = 'Erro ao Alterar';
+                    }
+                } else { //NOVO
+                    if ($eventoDAO->insert($evento)) { //SUCESSO                      
+                        $msg = 'Evento Cadastrado com Sucesso';
+
+                        header('location:?controller=evento&action=listar&status=1&msg='.$msg);
+                        
+                    } else { //ERRO                       
+                        $_SESSION['msg'] = 'Erro ao Inserir';
+                    }
+                }
+            } else {               
+                $_SESSION['msg'] = 'Alguns erros foram encontrados:<br>' . $msg;
             }
 
-            $eventoDAO = new EventoDAO();
+            include_once('View/evento/form.php');
+            
+        } else {
+            header('location:index.php?controller=home&action=index');
+        }
+    }
 
-            if ($evento->getId() > 0) {
-                if ($eventoDAO->update($evento)) {
-                    $_SESSION['success'] = true;
-                    $_SESSION['msg'] = 'Evento Alterado com Sucesso';
-                } else {
-                    $_SESSION['success'] = false;
-                    $_SESSION['msg'] = 'Erro ao Alterar';
-                }
-            } else {
-                if ($eventoDAO->insert($evento)) {
-                    $_SESSION['success'] = true;
-                    $_SESSION['msg'] = 'Evento Cadastrado com Sucesso';
-                } else {
-                    $_SESSION['success'] = false;
-                    $_SESSION['msg'] = 'Erro ao Alterar';
-                }
-            }
+    public function novo() {
 
+        if (isset($_SESSION['user']['id'])) { //AUTENTICAÇÃO LOGIN
             unset($_SESSION['id']);
             unset($_SESSION['nome']);
             unset($_SESSION['descricao']);
@@ -68,14 +105,6 @@ class EventoController {
             unset($_SESSION['imagem']);
             unset($_SESSION['status']);
 
-            header('location:?controller=evento&action=listar&status=1');
-        } else {
-            header('location:index.php?controller=home&action=index');
-        }
-    }
-
-    public function novo() {
-        if (isset($_SESSION['user']['id'])) { //AUTENTICAÇÃO LOGIN
             include_once('View/evento/form.php');
         } else {
             header('location:index.php?controller=home&action=index');
@@ -83,6 +112,7 @@ class EventoController {
     }
 
     public function editar() {
+
         if (isset($_SESSION['user']['id'])) { //AUTENTICAÇÃO LOGIN
             $eventoDAO = new EventoDAO();
             $evento = $eventoDAO->getById($_GET['id']);

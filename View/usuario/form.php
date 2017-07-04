@@ -16,9 +16,23 @@
             </div>
             <br>
 
+
             <div class="row">                
                 <div class="col-lg-2 col-md-2 col-sm-2"> </div>
                 <div class="col-lg-8 col-md-8 col-sm-8 ">
+                    <?php
+                    if (isset($_SESSION['msg'])) {
+                        ?>
+
+                        <div class="alert alert-danger">
+                            <?php echo $_SESSION['msg']; ?>
+                        </div>
+
+                        <?php
+                        unset($_SESSION['msg']);
+                    }
+                    ?>
+
                     <form method="POST" action="?controller=usuario&action=salvar">
                         <input type="hidden" name="id" value="<?php echo isset($_SESSION['id']) ? $_SESSION['id'] : null; ?>"/> 
                         <div class="form-group">

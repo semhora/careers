@@ -4,9 +4,9 @@
 
         <title>Login</title>
     </head>
-    <body>
-
+    <body>  
         <div class="container">
+            <?php include_once(getcwd() . '/View/includes/header.php'); ?>  
             <div class="row main">
                 <div class="panel-heading">
                     <div class="panel-title text-center">
@@ -28,7 +28,7 @@
                                         <?php echo $_SESSION['msg']; ?>
                                     </div>
 
-                                    <?php
+                                    <?php                                   
                                     unset($_SESSION['success']);
                                     unset($_SESSION['msg']);
                                 }
@@ -46,7 +46,6 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <a class='btn btn-small btn-info' href="?controller=home&action=index">Voltar ao Site</a>
                                         <input type="submit" class="btn btn-success" value="Entrar" required/>
                                     </div>
                                 </form>
