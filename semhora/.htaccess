@@ -1,0 +1,20 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+    RewriteRule ^$ public/index.php [NC,L]
+
+    RewriteRule ^usuarios\/?$ public/usuarios.php [NC,L]
+    RewriteRule ^usuarios\/([a-z0-9-]+)\/?$ public/usuarios.php?method=$1 [NC]
+    RewriteRule ^usuarios\/([a-z0-9-]+)\/([0-9]+)/?$ public/usuarios.php?method=$1&id=$2 [NC]
+
+    RewriteRule ^administracao/eventos\/?$ public/events-manager.php [NC,L]
+    RewriteRule ^administracao/eventos\/([a-z0-9-]+)\/?$ public/events-manager.php?method=$1 [NC]
+    RewriteRule ^administracao/eventos\/([a-z0-9-]+)\/([0-9]+)/?$ public/events-manager.php?method=$1&id=$2 [NC]
+
+    RewriteRule ^eventos\/?$ public/eventos.php [NC,L]
+
+    RewriteRule ^register\/?$ public/register.php
+    RewriteRule ^logout\/?$ public/logout.php
+    RewriteRule ^login\/?$ public/login.php
+
+</IfModule>

@@ -1,0 +1,92 @@
+{include file="../app/header.html"}
+<link href="/semhora/public/css/events-manager.css" rel="stylesheet" type="text/css" />
+<script src="/semhora/public/js/valida.js"></script>
+<script src="/semhora/public/js/events-manager.js"></script>
+{if isset($events[0])}
+    {assign var="dataHorario" value=$events[0]->getHorario()|default:""}
+{else}
+    {assign var="dataHorario" value=""}
+{/if}
+<div class="container-fluid text-center">
+    <div class="row content">
+        <div class="col-md-8 col-md-offset-2 col-lg-7 col-lg-offset-2">
+            {if isset($msg)}
+            <div class="alert {$msg['color']} text-left mtop20" role="alert">
+                <span class="glyphicon {$msg['glyphicon']}" aria-hidden="true"></span>
+                <span class="sr-only">Error:</span>
+                {$msg['text']}
+            </div>
+            {/if}
+            <div class="panel mtop20 panel-default">
+                <div class="panel-heading">
+                    Cadastro de Evento <a href="/semhora/administracao/eventos/" class="pull-right btn btn-sm btn-default">Lista</a>
+                </div>
+                <form method="post" id="formCard" enctype="multipart/form-data">
+                    {if isset($id)}
+                    <input type="hidden" name='id' value='{$id}'>
+                    <input type="hidden" name='method' value='edita'>
+                    {else}
+                    <input type="hidden" name='method' value='cadastra'>
+                    {/if}
+                    <input type="hidden" name='author' value='{$author}'>
+                    <div class="col-md-3 mtop20 text-left">
+                        <div class="form-group">
+                          <label for="nome">Nome:</label>
+                          <input type="text" required="" char="4" value="{if isset($events[0])}{$events[0]->getNome()}{/if}" maxlength="255" class="form-control" id="nome" name="nome">
+                        </div>
+                        <div class="form-group">
+                            <label for="local">Local: </label>
+                          <input type="text" required="" char="4" value="{if isset($events[0])}{$events[0]->getLocal()}{/if}" maxlength="255" class="form-control" id="local" name="local">
+                        </div>
+                        <div class="form-group">
+                            <label for="horario">Data: </label>
+                            <input type="text" required="" char="10" value="{$dataHorario|substr:0:10}" maxlength="255" class="form-control" id="data" name="data">
+                        </div>
+                        <div class="form-group">
+                            <label for="horario">Horário: </label>
+                            <input type="text" required="" char="5" value="{$dataHorario|substr:11:16}" maxlength="255" class="form-control" id="horario" name="horario">
+                        </div>
+                        <div class="form-group">
+                            <label for="status">Status: </label>
+                            <select name="status" id="status" class="form-control">
+                                <option>--</option>
+                                <option value="1" {if isset($events[0]) && $events[0]->getStatus() == 1}selected{/if}>Ativo</option>
+                                <option value="0" {if isset($events[0]) && $events[0]->getStatus() == 0}selected{/if}>Inativo</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-9 mtop20 text-left">
+                        <div class="form-group">
+                            <label for="imagem">Imagem: </label>
+                            <!-- image-preview-filename input [CUT FROM HERE]-->
+                            <div class="input-group image-preview">
+                                <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
+                                <span class="input-group-btn">
+                                    <!-- image-preview-clear button -->
+                                    <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
+                                        <span class="glyphicon glyphicon-remove"></span> Limpar
+                                    </button>
+                                    <!-- image-preview-input -->
+                                    <div class="btn btn-default image-preview-input">
+                                        <span class="glyphicon glyphicon-folder-open"></span>
+                                        <span class="image-preview-input-title">Procurar</span>
+                                        <input type="file" accept="image/png, image/jpeg, image/gif" name="imagem" id="imagem"/> <!-- rename it -->
+                                    </div>
+                                </span>
+                            </div><!-- /input-group image-preview [TO HERE]-->
+                            <!--<input type="text" required="" char="4" value="{if isset($events[0])}{$events[0]->getImagem()}{/if}" maxlength="255" class="form-control" id="imagem" name="imagem">-->
+                        </div>
+                        <div class="form-group">
+                            <label for="descricao">Descrição</label>
+                            <textarea  char="4" class="form-control" rows="8" maxlength="500" id="descricao" name="descricao">{if isset($events[0])}{$events[0]->getDescricao()}{/if}</textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-success pull-right">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="../app/footer.html"}
