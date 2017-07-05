@@ -1,0 +1,21 @@
+<h1>Eventos</h1>
+
+<div class="row">
+
+    <?php foreach ($this->view->eventos as $evento): ?>
+
+        <div class="col-md-4">
+            <div class="thumbnail">
+                <a href="/evento/<?= $evento->id ?>" target="_blank">
+                    <img src="/assets/imgs/<?= $evento->img ?>" alt="Lights" style="width:100%">
+                    <div class="caption">
+                        <p><?= $evento->nome ?></p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+    <?php endforeach; ?>
+
+</div>
+
