@@ -1,0 +1,21 @@
+{include file="../app/header.html"}
+<link href="/semhora/public/css/login.css" rel="stylesheet">
+<div class="wrapper">
+    <form class="form-signin" action="/semhora/register" method="POST">
+      <h2 class="form-signin-heading">Cadastro</h2>
+      <input type="text" class="form-control top5" name="nome" placeholder="Nome" required="" autofocus="" />
+      <input type="text" class="form-control top5" name="login" placeholder="Login" required="" autofocus="" />
+      <input type="email" class="form-control top5" name="email" placeholder="E-mail" required="" autofocus="" />
+      <input type="password" class="form-control top5" name="password" placeholder="Senha" required=""/>
+      <button class="btn btn-lg btn-primary btn-block  top5" type="submit">Cadastrar</button>
+    </form>
+</div>
+{if isset($falhaCadastro)}
+{literal}
+<script src="/semhora/public/js/valida.js"></script>
+<script>
+    manipulaModal(1, '{/literal}{$falhaCadastro}{literal}');
+</script>
+{/literal}
+{/if}
+{include file="../app/footer.html"}

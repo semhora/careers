@@ -1,0 +1,58 @@
+<div class="col-sm-3 sidenav">
+<h4>Eventos Sem Hora</h4>
+<ul class="nav nav-pills nav-stacked">
+    {if isset($eventsSidebar[0])}
+        {foreach from=$eventsSidebar item=eventSidebar}
+            <li {if isset($key) && $eventSidebar->getNome() == $key}class="active"{/if}  data-toggle="modal" data-target="#modal{$eventSidebar->getId()}">
+                <span class="label label-default">{$eventSidebar->getNome()}</span>
+            </li>
+        {/foreach}
+    {/if}
+</ul><br>
+    {if isset($eventsSidebar[0])}
+    {foreach from=$eventsSidebar item=eventSidebar}
+        <!-- Modal -->
+        <div id="modal{$eventSidebar->getId()}" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">{$eventSidebar->getNome()}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                {if $eventSidebar->getImagem() eq ''}
+                                <img src="/semhora/public/images/no-image-200x200.jpg" class="img-responsive">
+                                {else}
+                                <img src="/semhora/public/uploads/{$eventSidebar->getImagem()}" style="max-height: 500px; max-width: 400px;" alt="{$eventSidebar->getNome()}">
+                                {/if}
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>Local:</strong> {$eventSidebar->getLocal()}</p>
+                                <p><strong>Data/Horário:</strong> {$eventSidebar->getHorario()}</p>
+                                <p><strong>Descrição:</strong> {$eventSidebar->getDescricao()}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        {/foreach}
+    {/if}
+<form method="post">
+<div class="input-group">
+  <input type="text" class="form-control" name="any" placeholder="Procurar Evento..">
+  <span class="input-group-btn">
+    <button class="btn btn-default" type="button">
+      <span class="glyphicon glyphicon-search"></span>
+    </button>
+  </span>
+</div>
+</form>
+</div>

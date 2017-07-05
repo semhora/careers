@@ -1,0 +1,38 @@
+{include file="../app/header.html"}
+<div class="container-fluid text-center">
+    <div class="row content">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel mtop20 panel-default">
+                <div class="panel-heading">Usuários <a href="/semhora/register" class="pull-right btn btn-sm btn-default">Novo</a> </div>
+                <table class="table text-center table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Login</th>
+                        <th>E-mail</th>
+                        <th>Ações</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {if $users neq false}
+                    {foreach from=$users item=user}
+                    <tr>
+                        <td>{$user->getName()}</td>
+                        <td>{$user->getLogin()}</td>
+                        <td>{$user->getEmail()}</td>
+                        <td>
+                            <button class="btn btn-sm btn-danger glyphicon glyphicon-trash" id="{$user->getId()}"></button>
+                            <a href="usuarios/edita/{$user->getId()}" class="btn btn-sm btn-default glyphicon glyphicon-edit"></a>
+
+                        </td>
+                    </tr>
+                    {/foreach}
+                    {/if}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/semhora/public/js/valida.js"></script>
+{include file="../app/footer.html"}

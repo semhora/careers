@@ -1,0 +1,59 @@
+{include file="../app/header.html"}
+<div class="container-fluid text-center">
+    <div class="row content">
+        <div class="col-md-8 col-md-offset-2 col-lg-7 col-lg-offset-2">
+            {if isset($msg)}
+            <div class="alert {$msg['color']} text-left mtop20" role="alert">
+                <span class="glyphicon {$msg['glyphicon']}" aria-hidden="true"></span>
+                <span class="sr-only">Error:</span>
+                {$msg['text']}
+            </div>
+            {/if}
+            <div class="panel mtop20 panel-default">
+                <div class="panel-heading">
+                    Formulário de Usuário <a href="/semhora/usuarios/lista" class="pull-right btn btn-sm btn-default">Lista</a>
+                </div>
+                <form method="post" id="formCard" class='form-horizontal'>
+                    {if isset($id)}
+                    <input type="hidden" name='id' value='{$id}'>
+                    <input type="hidden" name='method' value='edita'>
+                    {else}
+                    <input type="hidden" name='method' value='cadastra'>
+                    {/if}
+                    <input type="hidden" name='author' value='{$author}'>
+                    <div class="col-md-12 mtop20 text-left">
+                        <div class="form-group">
+                            <label for="nome" class='col-sm-2 text-right'>Nome</label>
+                            <div class="col-sm-6">
+                                <input type="text" required="" char="4" value="{if isset($users)}{$users->getName()}{/if}" maxlength="255" class="form-control" id="nome" name="nome">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="login" class='col-sm-2 text-right'>Login</label>
+                            <div class="col-sm-6">
+                                <input type="text" required="" char="4" maxlength="255" value="{if isset($users)}{$users->getLogin()}{/if}" class="form-control" id="login" name="login">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class='col-sm-2 text-right'>E-mail</label>
+                            <div class="col-sm-6">
+                                <input type="email" required="" char="4" maxlength="255" value="{if isset($users)}{$users->getEmail()}{/if}" class="form-control" id="email" name="email">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class='col-sm-2 text-right'>Senha</label>
+                            <div class="col-sm-6">
+                                <input type="password" required="" char="4" maxlength="255" class="form-control" id="password" name="password">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <button type="submit" class="btn btn-success pull-right">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/semhora/public/js/valida.js"></script>
+{include file="../app/footer.html"}

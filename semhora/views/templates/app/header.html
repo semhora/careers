@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Test</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Language" content="pt-br" />
+        <!-- includes css -->
+        <link href="/semhora/public/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="/semhora/public/css/jquery-ui-1.9.2.custom.min.css" rel="stylesheet">
+        <link href="/semhora/public/css/jquery-ui.theme.css" rel="stylesheet">
+        <link href="/semhora/public/css/style.css" rel="stylesheet">
+        <!-- includes js -->
+        <script type="text/javascript" src="/semhora/public/js/jquery.js"></script>
+        <script type="text/javascript" src="/semhora/public/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/semhora/public/js/jquery-ui-1.9.2.custom.min.js"></script>
+        <script type="text/javascript" src="/semhora/public/js/modalwaitingfor.js"></script>
+        <!-- includes cdn -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.js"  type="text/javascript"></script>
+    </head>
+    <body>
+        <div id="modal-load" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title txt-vermelho" id="modal-title">Erro de preenchimento</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-danger" id="tipo-modal" role="alert">
+                          <h5><span id="error-text"></span></h5>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <a href="#" class="btn btn-default" data-dismiss="modal">Fechar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"></a>
+              </div>
+              <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                {if $online eq "true"}
+                  <li class="active"><a href="/semhora">Home</a></li>
+                  <li><a href="/semhora/administracao/eventos/">Gerenciador de Eventos</a></li>
+                  <li><a href="/semhora/usuarios">Usuários</a></li>
+                  <li><a href="mailto:diegogandradex@gmail.com">Contato</a></li>
+                {/if}
+                    <li><a href="/semhora/eventos/">Eventos</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                {if $online eq "true"}
+                  <li><a href="/semhora/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                {else}
+                  <li><a href="/semhora/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                {/if}
+                </ul>
+              </div>
+            </div>
+        </nav>
