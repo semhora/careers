@@ -1,0 +1,17 @@
+{
+	"name":"cms",
+	"require":{
+		"php":">=7"
+	},
+	"authors":[
+		{
+			"name":"Felipe Fausto Silva",
+			"email":"felipefausto.dev@gmail.com"
+		}
+	],
+	"autoload":{
+		"psr-4":{
+			"App\\":"App/"
+		}
+	}
+}
