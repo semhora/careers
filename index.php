@@ -1,3 +1,11 @@
+<?php
+    define( 'WWW_ROOT' , dirname( __FILE__ ) );
+    define( 'DS', DIRECTORY_SEPARATOR );
+
+    require_once( WWW_ROOT . DS . 'autoload.php');
+
+    use Model\Evento;
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -19,7 +27,7 @@
                         </div>
                     </div>
                     <div class="panel-body">
-                        Panel Content
+                        
                     </div>
                 </div>
             </div>
