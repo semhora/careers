@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/usr/share/nginx/html/estudo/disclosureEvents/Controller/UserController.php</file>
+            <file>file:/usr/share/nginx/html/estudo/disclosureEvents/vendor/phroute/phroute/src/Phroute/HandlerResolver.php</file>
+            <file>file:/usr/share/nginx/html/estudo/disclosureEvents/vendor/phroute/phroute/src/Phroute/Dispatcher.php</file>
+            <file>file:/usr/share/nginx/html/estudo/disclosureEvents/index.php</file>
+            <file>file:/usr/share/nginx/html/estudo/disclosureEvents/Controller/AbstractController.php</file>
+            <file>file:/usr/share/nginx/html/estudo/disclosureEvents/Route.php</file>
+            <file>file:/usr/share/nginx/html/estudo/disclosureEvents/Service/AbstractService.php</file>
+            <file>file:/usr/share/nginx/html/estudo/disclosureEvents/Entity/Event.php</file>
+            <file>file:/usr/share/nginx/html/estudo/disclosureEvents/public/views/user/form.php</file>
+            <file>file:/usr/share/nginx/html/estudo/disclosureEvents/Entity/User.php</file>
+            <file>file:/usr/share/nginx/html/estudo/disclosureEvents/bootstrap.php</file>
+            <file>file:/usr/share/nginx/html/estudo/disclosureEvents/composer.json</file>
+            <file>file:/usr/share/nginx/html/estudo/disclosureEvents/Service/UserService.php</file>
+        </group>
+    </open-files>
+</project-private>

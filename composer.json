@@ -1,0 +1,14 @@
+{
+    "name": "vendor/disclosure-events",
+    "description": "Teste para vaga de backend",
+    "authors": [
+        {
+            "name": "joilson",
+            "email": "joilson560@gmail.com"
+        }
+    ],
+    "require": {
+        "phroute/phroute": "^2.1",
+        "doctrine/orm": "^2.5"
+    }
+}
