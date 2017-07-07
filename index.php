@@ -19,7 +19,7 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 <div class="panel panel-info">
                     <div class="panel-heading">
                         <div class="panel-title">
@@ -31,7 +31,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 <form>
                     <div class="panel panel-info">
                         <div class="panel-heading">
@@ -43,7 +43,7 @@
                             <fieldset>
                                 <div class="row form-group">
                                     <div class="col-lg-12">
-                                        <label>Nome Completo</label>
+                                        <label>Nome de usuário</label>
                                         <input class="form-control" type="text" name="nome">
                                     </div>
                                 </div>
@@ -70,19 +70,19 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <label>Descricao</label>
-                                        <input class="form-control" type="text" name="nome">
+                                        <input class="form-control" type="text" name="descricao">
                                     </div>
                                     <div class="col-lg-12">
                                         <label>Local</label>
-                                        <input class="form-control" type="text" name="nome">
+                                        <input class="form-control" type="text" name="local">
                                     </div>
                                     <div class="col-lg-12">
                                         <label>Horário de início</label>
-                                        <input class="form-control" type="text" name="nome">
+                                        <input class="form-control" type="text" name="horario">
                                     </div>
                                     <div class="col-lg-12">
                                         <label>Imagem</label>
-                                        <input class="form-control" type="text" name="nome">
+                                        <input class="form-control" type="text" name="imagem">
                                     </div>
                                     <div class="col-lg-12">
                                         <label>Status</label>
