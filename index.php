@@ -27,7 +27,16 @@
                         </div>
                     </div>
                     <div class="panel-body">
-                        
+                        <?php
+                        $eventos = Evento::buscarTodos();
+                        foreach($eventos as $evento) {
+                            
+                        }
+                        ?>
+                        <div class="col-lg-4">
+                            <label style="width: 100%; text-align: center;">Balada Top</label>
+                            <img src="img1.jpg" style="width: 100%;">
+                        </div>
                     </div>
                 </div>
             </div>

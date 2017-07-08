@@ -6,7 +6,6 @@ require_once( WWW_ROOT . DS . 'autoload.php');
 
 use Model\Evento;
 
-    //Testando serialização
 function armazenarEvento() {
     $evento = new Evento("Balada Top", "É uma balada muito top", "Lugar top", "22:00", "imagem.jpg", "ativo");
     $evento->armazenar();
@@ -19,7 +18,5 @@ function buscarTodosEventos() {
         print ("<br>");
     }
 }
-
-buscarTodosEventos();
 
 ?>
