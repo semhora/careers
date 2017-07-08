@@ -23,11 +23,9 @@ class Evento
         $s = file_get_contents('eventos.txt');
         $eventos = unserialize($s);
         if ($eventos == false) {
-            print "vazio<br>";
             $eventos = array();
         }
         $tamanho = count($eventos);
-        print ("tamanho: " . $tamanho);
         $eventos[$tamanho] = $this;
         $s = serialize($eventos);
         file_put_contents('eventos.txt', $s);

@@ -42,7 +42,7 @@
                 </div>
             </div>
             <div class="col-lg-12">
-                <form>
+                <form action="cadastrar_usuario.php" method="post" enctype="multipart/form-data">
                     <div class="panel panel-info">
                         <div class="panel-heading">
                             <div class="panel-title">
@@ -54,7 +54,11 @@
                                 <div class="row form-group">
                                     <div class="col-lg-12">
                                         <label>Nome de usuário</label>
-                                        <input class="form-control" type="text" name="nome">
+                                        <input class="form-control" type="text" name="login">
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <label>Senha</label>
+                                        <input class="form-control" type="password" name="senha">
                                     </div>
                                 </div>
                                 <div>
