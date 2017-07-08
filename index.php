@@ -33,15 +33,11 @@
                             ?>
                         <div class="col-lg-4">
                             <label style="width: 100%; text-align: center;"><?=$evento->nome?></label>
-                            <img src="img1.jpg" style="width: 100%;">
+                            <img src="/imagens/<?=$evento->imagem?>" style="width: 100%;">
                         </div>
                             <?php
                         }
                         ?>
-                        <div class="col-lg-4">
-                            <label style="width: 100%; text-align: center;">Balada Top</label>
-                            <img src="img1.jpg" style="width: 100%;">
-                        </div>
                     </div>
                 </div>
             </div>
@@ -68,7 +64,7 @@
                         </div>
                     </div>
                 </form>
-                <form>
+                <form action="cadastrar_evento.php" method="post" enctype="multipart/form-data">
                     <div class="panel panel-info">
                         <div class="panel-heading">
                             <div class="panel-title">
@@ -96,7 +92,8 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <label>Imagem</label>
-                                        <input class="form-control" type="text" name="imagem">
+                                        <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
+                                        <input name="userfile" type="file" />
                                     </div>
                                     <div class="col-lg-12">
                                         <label>Status</label>
