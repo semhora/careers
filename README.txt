@@ -17,14 +17,14 @@ ________________________________________________________________________________
 
 1.1 - No Mysql: CREATE DATABASE teste;
 
-1.2 - No Mysql: insert into user (user, pass) values ("admin", "admin");
-
 1.2 - Na raiz do projeto, rodar: composer install
 
 1.3 - Atualizar o arquivo cofig.php na raiz do projeto com os dados de conexão ao MySql
 
 1.4 - Na raiz do projeto Rodar o comand do Codctrine para criar as tabelas: 
       vendor/bin/doctrine orm:schema-tool:update --force
+
+1.5 - No Mysql: insert into user (user, pass) values ("admin", "admin");
       
 ________________________________________________________________________________________________________________________
 

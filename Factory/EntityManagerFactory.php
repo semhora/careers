@@ -17,7 +17,7 @@ class EntityManagerFactory
             'dbname'   => DBNAME,
             'user'     => DBUSER,
             'password' => DBPASS,
-            'host'     => 'localhost',
+            'host'     => DBHOST,
             'driver'   => 'pdo_mysql',
         );
 
