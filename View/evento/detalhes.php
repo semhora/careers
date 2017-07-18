@@ -1,7 +1,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <?php include_once(getcwd() . '/View/includes/includes.html'); ?>
+        <?php include_once(getcwd() . '/View/includes/includes.php'); ?>
 
         <title>Evento: <?php echo $evento->getNome(); ?></title>
     </head>
@@ -29,7 +29,7 @@
                                         <div class="panel-body">
                                             <div class="row">
                                                 <div class="col-lg-6 col-md-6 col-sm-6"> 
-                                                    <img src="Files/<?php echo $evento->getImagem(); ?>"   class="img-rounded" style="width:100%"/>
+                                                    <img src="<?php echo PASTA .'/Files/'.$evento->getImagem(); ?>"   class="img-rounded" style="width:100%"/>
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6"> 
                                                     <h3>Local: <?php echo utf8_encode($evento->getLocal()); ?></h3>
@@ -46,7 +46,7 @@
                             </div>
                             <div class="row">
                                 <div class="text-center col-lg-12 col-md-12 col-sm-12"> 
-                                    <a class='btn btn-small btn-info' href="?controller=evento&action=listar&status=1">Voltar</a>
+                                    <a class='btn btn-small btn-info' href="<?php echo PASTA .'/evento/listar/1'; ?>">Voltar</a>
                                 </div>
                             </div>
                         </div>

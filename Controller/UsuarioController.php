@@ -1,9 +1,4 @@
 <?php
-
-include_once('Model/DB.php');
-include_once('Model/Usuario.php');
-include_once('Model/UsuarioDAO.php');
-
 class UsuarioController {
 
     public function listar() {
@@ -13,7 +8,7 @@ class UsuarioController {
             
             include_once('View/usuario/list.php');
         } else {
-            header('location:index.php?controller=home&action=index');
+            header('location:'.PASTA);
         }
     }
 
@@ -47,8 +42,8 @@ class UsuarioController {
                 if ($usuario->getId() > 0) { //JÁ EXISTE
                     if ($usuarioDAO->update($usuario)) { //SUCESSO                        
                         $msg = 'Usuário Alterado com Sucesso';
+                        header('location:'.PASTA .'/usuario/listar/1/'.$msg);
                         
-                        header('location:?controller=usuario&action=listar&status=1&msg='.$msg);
                     } else { //ERRO                   
                         
                         $_SESSION['msg'] = 'Erro ao Alterar';
@@ -56,9 +51,9 @@ class UsuarioController {
                 } else { //NOVO
                     if ($usuarioDAO->insert($usuario)) { //SUCESSO
                         
-                        $msg = 'Usuário Cadastrado com Sucesso';
-
-                        header('location:?controller=usuario&action=listar&status=1&msg='.$msg);
+                        $msg = 'Usuário Cadastrado com Sucesso';                        
+                        header('location:'.PASTA .'/usuario/listar/1/'.$msg);
+                        
                     } else { //ERRO                        
                         $_SESSION['msg'] = 'Erro ao Inserir';
                     }
@@ -69,7 +64,7 @@ class UsuarioController {
 
             include_once('View/usuario/form.php');
         } else {
-            header('location:index.php?controller=home&action=index');
+            header('location:'.PASTA);
         }
     }
 
@@ -86,7 +81,7 @@ class UsuarioController {
             include_once('View/usuario/form.php');
             
         } else {
-            header('location:index.php?controller=home&action=index');
+            header('location:'.PASTA);
         }
     }
 
@@ -103,7 +98,7 @@ class UsuarioController {
 
             include_once('View/usuario/form.php');
         } else {
-            header('location:index.php?controller=home&action=index');
+            header('location:'.PASTA);
         }
     }
 

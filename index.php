@@ -1,9 +1,17 @@
 <?php
 session_start();
+
+//ARQUIVO DE CONFIGURAÇÃO
+include_once('config.php');
+
+//LOAD DAS CLASSES
+function __autoload($class){
+    include('Model/'.$class.'.php');
+}
  
 //se digirar
-if(sizeof($_GET) == 0){
-   header('Location: http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'?controller=home&action=index');
+if(sizeof($_GET) == 0){    
+   header('location:'.PASTA.'/home');
 }
 
 if (isset($_GET['controller'])) {

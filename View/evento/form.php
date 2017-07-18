@@ -1,6 +1,6 @@
 <html>
     <head>
-        <?php include_once(getcwd() . '/View/includes/includes.html'); ?>
+        <?php include_once(getcwd() . '/View/includes/includes.php'); ?>
 
         <title>Cadastro</title>
     </head>
@@ -34,7 +34,7 @@
                     }
                     ?>
                     <?php if (isset($_SESSION['id']) && $_SESSION['id'] != '') { ?>
-                        <img src="Files/<?php echo isset($_SESSION['imagem']) ? $_SESSION['imagem'] : null; ?>"   class="img-rounded" height="100" width="100"/>
+                        <img src="<?php echo PASTA .'/Files/'.(isset($_SESSION['imagem']) ? $_SESSION['imagem'] : null); ?>"   class="img-rounded" height="100" width="100"/>
                     <?php } ?>
                 </div>
             </div><br>
@@ -44,7 +44,7 @@
                 <div class="col-lg-2 col-md-2 col-sm-2"> </div>
                 <div class="col-lg-8 col-md-8 col-sm-8 ">
 
-                    <form method="POST" action="?controller=evento&action=salvar" enctype='multipart/form-data'>
+                    <form method="POST" action="<?php echo PASTA .'/evento/salvar'; ?>" enctype='multipart/form-data'>
                         <input type="hidden" name="id" value="<?php echo isset($_SESSION['id']) ? $_SESSION['id'] : null; ?>"/> 
                         <div class="form-group">
                             <label for="status">Status</label>                          
@@ -75,7 +75,7 @@
                         </div>
 
                         <div class="form-group">
-                            <a class='btn btn-small btn-info' href="?controller=evento&action=listar&status=1">Voltar</a>
+                            <a class='btn btn-small btn-info' href="<?php echo PASTA .'/evento/listar/1'; ?>">Voltar</a>
                             <input type="submit" class="btn btn-success" value="Salvar" required/>
                         </div>
                     </form>

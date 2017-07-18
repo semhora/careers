@@ -1,7 +1,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <?php include_once(getcwd() . '/View/includes/includes.html'); ?>
+        <?php include_once(getcwd() . '/View/includes/includes.php'); ?>
 
         <title>Listagem</title>
     </head>
@@ -16,11 +16,11 @@
                             <?php
                             if (isset($_SESSION['user']['id'])) {
                                 if ($_GET['status'] == 1) {
-                                    echo '&nbsp; <a class="btn btn-danger" href="?controller=evento&action=listar&status=0">Visualizar Inativos</a>';
+                                    echo '&nbsp; <a class="btn btn-danger" href="'.PASTA .'/evento/listar/0">Visualizar Inativos</a>';
                                 } else {
-                                    echo '&nbsp; <a class="btn btn-success" href="?controller=evento&action=listar&status=1">Visualizar Ativos</a>';
+                                    echo '&nbsp; <a class="btn btn-success" href="'.PASTA .'/evento/listar/1">Visualizar Ativos</a>';
                                 }
-                                echo '&nbsp; <a class="btn btn-default" href="?controller=evento&action=novo">Novo</a>';
+                                echo '&nbsp; <a class="btn btn-default" href="'.PASTA .'/evento/novo">Novo</a>';
                             }
                             ?>
 
@@ -60,12 +60,12 @@
                                     <tr>
                                         <td><?php echo utf8_encode($row['nome']); ?></td>
                                         <td><?php echo utf8_encode(substr($row['descricao'], 0, 65) . '...'); ?></td>
-                                        <td><img src="Files/<?php echo $row['imagem']; ?>"   class="img-rounded" height="120" width="120"/></td>
+                                        <td><img src="<?php echo PASTA .'/Files/'.$row['imagem']; ?>"   class="img-rounded" height="120" width="120"/></td>
                                         <td>
-                                            <a class='btn btn-small btn-success' href="?controller=evento&action=visualizar&id=<?php echo $row['id'] ?>">Ver Detalhes</a>
+                                            <a class='btn btn-small btn-success' href="<?php echo PASTA .'/evento/visualizar/'.$row['id']; ?>">Ver Detalhes</a>
 
                                             <?php if (isset($_SESSION['user']['id'])) { ?>
-                                                <a class='btn btn-small btn-info' href="?controller=evento&action=editar&id=<?php echo $row['id'] ?>">Editar</a>
+                                                <a class='btn btn-small btn-info' href="<?php echo PASTA .'/evento/editar/'.$row['id']; ?>">Editar</a>
                                             <?php } ?>
                                         </td>
                                     </tr>

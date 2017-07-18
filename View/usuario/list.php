@@ -1,7 +1,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <?php include_once(getcwd() . '/View/includes/includes.html'); ?>
+        <?php include_once(getcwd() . '/View/includes/includes.php'); ?>
 
         <title>Listagem</title>
     </head>
@@ -15,12 +15,12 @@
                         <h1><small>Lista de Usuários</small>
                             <?php
                             if ($_GET['status'] == 1) {
-                                echo '&nbsp; <a class="btn btn-danger" href="?controller=usuario&action=listar&status=0">Visualizar Inativos</a>';
+                                echo '&nbsp; <a class="btn btn-danger" href="'.PASTA .'/usuario/listar/0">Visualizar Inativos</a>';
                             } else {
-                                echo '&nbsp; <a class="btn btn-success" href="?controller=usuario&action=listar&status=1">Visualizar Ativos</a>';
+                                echo '&nbsp; <a class="btn btn-success" href="'.PASTA .'/usuario/listar/1">Visualizar Ativos</a>';
                             }
+                            echo '&nbsp; <a class="btn btn-default" href="'.PASTA .'/usuario/novo">Novo</a>';
                             ?>
-                            &nbsp; <a class="btn btn-default" href="?controller=usuario&action=novo">Novo</a>
                         </h1>
                     </div>
                 </div>
@@ -58,7 +58,7 @@
                                         <td><?php echo utf8_encode($row['nome']); ?></td>
                                         <td><?php echo utf8_encode($row['email']); ?></td> 
                                         <td>
-                                            <a class='btn btn-small btn-info' href="?controller=usuario&action=editar&id=<?php echo $row['id'] ?>">Editar</a>                                                                      
+                                            <a class='btn btn-small btn-info' href="<?php echo PASTA .'/usuario/editar/'.$row['id']; ?>">Editar</a>                                                                      
                                         </td>
                                     </tr>
 

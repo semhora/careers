@@ -17,10 +17,10 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li><a href="?controller=home&action=index">Home <span class="sr-only">(current)</span></a></li>
-                        <li><a href="?controller=evento&action=listar&status=1">Eventos</a></li>                                    
+                        <li><a href="<?php echo PASTA .'/home'; ?>">Home <span class="sr-only">(current)</span></a></li>
+                        <li><a href="<?php echo PASTA .'/evento/listar/1'; ?>">Eventos</a></li>                                    
                         <?php if (isset($_SESSION['user']['id'])) { ?>
-                            <li><a href="?controller=usuario&action=listar&status=1">Usuários</a></li>
+                            <li><a href="<?php echo PASTA .'/usuario/listar/1'; ?>">Usuários</a></li>
                         <?php } ?>
                     </ul>
 
@@ -30,10 +30,10 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo utf8_encode($_SESSION['user']['nome']); ?> <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="?controller=usuario&action=editar&id=<?php echo $_SESSION['user']['id'] ?>">Editar Dados</a></li>
-                                    <li><a href="?controller=home&action=logout">Sair</a></li>
+                                    <li><a href="<?php echo PASTA .'/home/logout'; ?>">Sair</a></li>
                                 </ul>
                             <?php } else { ?>
-                                <a href="?controller=home&action=login" class="dropdown-toggle">Login</a>                 
+                                <a href="<?php echo PASTA .'/home/login'; ?>" class="dropdown-toggle">Login</a>                 
                             <?php } ?>
                         </li>
                     </ul>

@@ -1,9 +1,5 @@
 <?php
 
-include_once('Model/DB.php');
-include_once('Model/Evento.php');
-include_once('Model/EventoDAO.php');
-
 class EventoController {
 
     public function listar() {
@@ -69,7 +65,7 @@ class EventoController {
                     if ($eventoDAO->update($evento)) { // SUCESSO                      
                         $msg = 'Evento Alterado com Sucesso';
                         
-                        header('location:?controller=evento&action=listar&status=1&msg='.$msg);
+                        header('location:'.PASTA .'/evento/listar/1/'.$msg);
                     } else { //ERRO                         
                         $_SESSION['msg'] = 'Erro ao Alterar';
                     }
@@ -77,7 +73,7 @@ class EventoController {
                     if ($eventoDAO->insert($evento)) { //SUCESSO                      
                         $msg = 'Evento Cadastrado com Sucesso';
 
-                        header('location:?controller=evento&action=listar&status=1&msg='.$msg);
+                        header('location:'.PASTA .'/evento/listar/1/'.$msg);
                         
                     } else { //ERRO                       
                         $_SESSION['msg'] = 'Erro ao Inserir';
@@ -90,7 +86,7 @@ class EventoController {
             include_once('View/evento/form.php');
             
         } else {
-            header('location:index.php?controller=home&action=index');
+            header('location:'.PASTA);
         }
     }
 
@@ -107,7 +103,7 @@ class EventoController {
 
             include_once('View/evento/form.php');
         } else {
-            header('location:index.php?controller=home&action=index');
+            header('location:'.PASTA);
         }
     }
 
@@ -127,7 +123,7 @@ class EventoController {
 
             include_once('View/evento/form.php');
         } else {
-            header('location:index.php?controller=home&action=index');
+            header('location:'.PASTA);
         }
     }
 

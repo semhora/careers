@@ -1,9 +1,4 @@
 <?php
-
-include_once('Model/DB.php');
-include_once('Model/Usuario.php');
-include_once('Model/UsuarioDAO.php');
-
 class HomeController {
 
     public function index() {
@@ -13,7 +8,7 @@ class HomeController {
     public function login() {
 
         if (isset($_SESSION['user']['id'])) { //AUTENTICAÇÃO LOGIN VAI PRA HOME LOGADO
-            header('location:index.php?controller=home&action=index');
+            header('location:'.PASTA);
         } else {
             if ($_POST) {
 
@@ -37,7 +32,8 @@ class HomeController {
                     $_SESSION['user']['senha'] = $usuario->getSenha();
                     $_SESSION['user']['status'] = $usuario->getStatus();
 
-                    header('location:index.php?controller=home&action=index');
+                    header('location:'.PASTA);
+                    
                 } else {
                     $_SESSION['success'] = false;
                     $_SESSION['msg'] = 'Usuário e/ou Senha Incorreto(s)';
@@ -56,7 +52,7 @@ class HomeController {
     public function logout() {
         session_destroy();
 
-        header('location:index.php?controller=home&action=index');
+        header('location:'.PASTA);
     }
 
 }

@@ -1,6 +1,6 @@
 <html>
     <head>
-        <?php include_once(getcwd() . '/View/includes/includes.html'); ?>
+        <?php include_once(getcwd() . '/View/includes/includes.php'); ?>
 
         <title>Login</title>
     </head>
@@ -35,7 +35,7 @@
                                 ?>
 
 
-                                <form method="POST" action="?controller=home&action=login">
+                                <form method="POST" action="<?php echo PASTA .'/home/login'; ?>">
                                     <div class="form-group">
                                         <label for="email">E-mail</label> 
                                         <input type="text" name="email" value="<?php echo isset($_SESSION['email']) ? $_SESSION['email'] : null; ?>" class="form-control" maxlength="50" required/>

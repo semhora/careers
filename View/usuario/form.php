@@ -1,6 +1,6 @@
 <html>
     <head>
-        <?php include_once(getcwd() . '/View/includes/includes.html'); ?>
+        <?php include_once(getcwd() . '/View/includes/includes.php'); ?>
 
         <title>Cadastro</title>
     </head>
@@ -33,7 +33,7 @@
                     }
                     ?>
 
-                    <form method="POST" action="?controller=usuario&action=salvar">
+                    <form method="POST" action="<?php echo PASTA .'/usuario/salvar'; ?>">
                         <input type="hidden" name="id" value="<?php echo isset($_SESSION['id']) ? $_SESSION['id'] : null; ?>"/> 
                         <div class="form-group">
                             <label for="status">Status</label>                          
@@ -56,7 +56,7 @@
                         </div>
 
                         <div class="form-group">
-                            <a class='btn btn-small btn-info' href="?controller=usuario&action=listar&status=1">Voltar</a>
+                            <a class='btn btn-small btn-info' href="<?php echo PASTA .'/evento/listar/1'; ?>">Voltar</a>
                             <input type="submit" class="btn btn-success" value="Salvar" required/>
                         </div>
                     </form>

@@ -1,6 +1,6 @@
 <html>
     <head>
-        <?php include_once(getcwd() . '/View/includes/includes.html'); ?>
+        <?php include_once(getcwd() . '/View/includes/includes.php'); ?>
 
         <title>Cadastro</title>
     </head>
