@@ -1,0 +1,10 @@
+RewriteEngine On
+
+RewriteRule ^(home)$ index.php?controller=home&action=index
+RewriteRule ^(home/login)$ index.php?controller=home&action=login
+RewriteRule ^(home/logout)$ index.php?controller=home&action=logout 
+
+RewriteRule ^([a-z]+)/(login|novo|salvar)$ index.php?controller=$1&action=$2
+RewriteRule ^([a-z]+)/(editar|visualizar)/([0-9]+)$ index.php?controller=$1&action=$2&id=$3
+RewriteRule ^([a-z]+)/(listar)/([0-9]+)$ index.php?controller=$1&action=$2&status=$3
+RewriteRule ^([a-z]+)/(listar)/([0-9]+)/(.*)$ index.php?controller=$1&action=$2&status=$3&msg=$4
