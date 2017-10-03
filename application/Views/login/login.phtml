@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!--> 
+<html lang="<?php echo GLOBAL_VARS['LINGUAGEM'] ?>" class="no-js"> <!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+   <meta charset="utf-8" />
+   <title><?php echo GLOBAL_VARS['TITULO']?></title>
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+   <meta content="<?php echo GLOBAL_VARS['DESCRICAO'] ?>" name="description" />
+   <meta content="<?php echo GLOBAL_VARS['AUTOR'] ?>" name="author" />
+   <meta name="MobileOptimized" content="320">
+   <!-- BEGIN GLOBAL MANDATORY STYLES -->          
+   <link href="<?php echo ASSETS['PLUGINS'] ?>font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+   <link href="<?php echo ASSETS['PLUGINS'] ?>bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+   <link href="<?php echo ASSETS['PLUGINS'] ?>uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+   <!-- END GLOBAL MANDATORY STYLES -->
+   <!-- BEGIN PAGE LEVEL STYLES --> 
+   <link rel="stylesheet" type="text/css" href="<?php echo ASSETS['PLUGINS'] ?>select2/select2_metro.css" />
+   <!-- END PAGE LEVEL SCRIPTS -->
+   <!-- BEGIN THEME STYLES --> 
+   <link href="<?php echo ASSETS['CSS'] ?>style-metronic.css" rel="stylesheet" type="text/css"/>
+   <link href="<?php echo ASSETS['CSS'] ?>style.css" rel="stylesheet" type="text/css"/>
+   <link href="<?php echo ASSETS['CSS'] ?>style-responsive.css" rel="stylesheet" type="text/css"/>
+   <link href="<?php echo ASSETS['CSS'] ?>plugins.css" rel="stylesheet" type="text/css"/>
+   <link href="<?php echo ASSETS['CSS'] ?>themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+   <link href="<?php echo ASSETS['CSS'] ?>pages/login-soft.css" rel="stylesheet" type="text/css"/>
+   <link href="<?php echo ASSETS['CSS'] ?>custom.css" rel="stylesheet" type="text/css"/>
+   <!-- END THEME STYLES -->
+   <link rel="shortcut icon" href="<?php echo ASSETS['IMG']?>favicon.ico" />
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body class="login">
+   <!-- BEGIN LOGO -->
+   <div class="logo">
+      <img src="<?php echo ASSETS['IMG']?>logo-semhora.png" alt="" />
+   </div>
+   <!-- END LOGO -->
+   <!-- BEGIN LOGIN -->
+   <div class="content">
+      <!-- BEGIN LOGIN FORM -->
+      <form id="formulario" name="formulario" class="login-form" action="" method="post">
+         <h3 class="form-title" align="center">Login</h3>
+         <div class="alert alert-error hide">
+            <button class="close" data-dismiss="alert"></button>
+            <span>Informe o usuário e a senha.</span>
+         </div>
+         <div class="form-group">
+            <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+            <label class="control-label visible-ie8 visible-ie9">Usuário</label>
+            <div class="input-icon">
+               <i class="icon-user"></i>
+               <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Usuário" name="username" id="username"/>
+            </div>
+         </div>
+         <div class="form-group">
+            <label class="control-label visible-ie8 visible-ie9">Senha</label>
+            <div class="input-icon">
+               <i class="icon-lock"></i>
+               <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Senha" name="password" id="password"/>
+            </div>
+         </div>
+         <div class="form-actions">
+            <button type="button" id="btnEnviar" class="btn blue pull-right">
+            Acessar <i class="m-icon-swapright m-icon-white"></i>
+            </button>           
+         </div>
+         <input type="hidden" name='imgAjaxLoader' id='imgAjaxLoader' value="<?php echo ASSETS['IMG'] ?>icons/ajax-loader.gif"/>
+      </form>
+      <!-- END LOGIN FORM -->        
+   </div>
+   <!-- END LOGIN -->
+   <!-- BEGIN COPYRIGHT -->
+   <div class="copyright-login">
+      <?php echo date('Y'); ?> &copy; <?php echo GLOBAL_VARS['TITULO'] ?>
+   </div>
+   <!-- END COPYRIGHT -->
+   <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+   <!-- BEGIN CORE PLUGINS -->   
+   <!--[if lt IE 9]>
+   <script src="<?php echo ASSETS['PLUGINS'] ?>respond.min.js"></script>
+   <script src="<?php echo ASSETS['PLUGINS'] ?>excanvas.min.js"></script> 
+   <![endif]-->   
+   <script src="<?php echo ASSETS['PLUGINS'] ?>jquery-1.10.2.min.js" type="text/javascript"></script>
+   <script src="<?php echo ASSETS['PLUGINS'] ?>jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+   <script src="<?php echo ASSETS['PLUGINS'] ?>bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+   <script src="<?php echo ASSETS['PLUGINS'] ?>bootstrap-hover-dropdown/twitter-bootstrap-hover-dropdown.min.js" type="text/javascript" ></script>
+   <script src="<?php echo ASSETS['PLUGINS'] ?>jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+   <script src="<?php echo ASSETS['PLUGINS'] ?>jquery.blockui.min.js" type="text/javascript"></script>  
+   <script src="<?php echo ASSETS['PLUGINS'] ?>jquery.cookie.min.js" type="text/javascript"></script>
+   <script src="<?php echo ASSETS['PLUGINS'] ?>uniform/jquery.uniform.min.js" type="text/javascript" ></script>
+   <!-- END CORE PLUGINS -->
+   <!-- BEGIN PAGE LEVEL PLUGINS -->
+   <script src="<?php echo ASSETS['PLUGINS'] ?>jquery-validation/dist/jquery.validate.min.js" type="text/javascript"></script>
+   <script src="<?php echo ASSETS['PLUGINS'] ?>jquery-validation/dist/localization/messages_pt_BR.js" type="text/javascript"></script>
+   <script src="<?php echo ASSETS['PLUGINS'] ?>backstretch/jquery.backstretch.min.js" type="text/javascript"></script>
+   <script src="<?php echo ASSETS['PLUGINS'] ?>select2/select2.min.js" type="text/javascript"></script>
+   <script src="<?php echo ASSETS['PLUGINS'] ?>jquery.md5.js" type="text/javascript"></script>
+   <!-- END PAGE LEVEL PLUGINS -->
+   <!-- BEGIN PAGE LEVEL SCRIPTS -->
+   <script src="<?php echo ASSETS['SCRIPTS'] ?>app.js" type="text/javascript"></script>
+   <script src="<?php echo ASSETS['SCRIPTS'] ?>login-soft.js" type="text/javascript"></script>
+   <script src="<?php echo ASSETS['SCRIPTS'] ?>custom.js" type="text/javascript"></script>
+   <script src="<?php echo ASSETS['SCRIPTS'] ?>custom/ClassUsuario.js" type="text/javascript"></script>
+   <script src="<?php echo ASSETS['SCRIPTS'] ?>custom/usuario.js" type="text/javascript"></script>
+   <!-- END PAGE LEVEL SCRIPTS --> 
+   <script>
+   	  $(document).ajaxStop($.unblockUI);
+      jQuery(document).ready(function() {     
+        App.init();
+        Login.init();
+      });
+   </script>
+   <!-- END JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>
