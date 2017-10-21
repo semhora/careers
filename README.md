@@ -1,3 +1,7 @@
+## Sobre o projeto
+
+Este projeto foi criado utilizando algumas bibliotecas como Symfony Router, HttpFoundation e Doctrine.
+
 ## Instalação do projeto
 
 Você deve ter:
